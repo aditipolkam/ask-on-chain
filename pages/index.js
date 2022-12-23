@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-
+import Link from "next/link";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -23,12 +23,14 @@ export default function Home() {
       <div className={styles.main}>
         <div className={styles.navbarcontent}>
           <div>
-            <Image
-              src="/logo.png"
-              alt="Ask on Chain Logo"
-              width={128}
-              height={128}
-            />
+            <Link href={"/"}>
+              <Image
+                src="/logo.png"
+                alt="Ask on Chain Logo"
+                width={128}
+                height={128}
+              />
+            </Link>
           </div>
           <div className={styles.button}>
             <a>Connect Wallet</a>
@@ -40,8 +42,13 @@ export default function Home() {
           <div className={styles.title}>
             {`"Dare to ask the Questions you are afraid of - Anonymously!"`}
           </div>
-          <div className={styles.button}>
-            <a href="#">Browse Profiles</a>
+          <div className={styles.profilebuttons}>
+            <div className={styles.button}>
+              <a href="#">Browse Profiles</a>
+            </div>
+            <div className={styles.button}>
+              <a href="#">Create Yours</a>
+            </div>
           </div>
         </div>
 

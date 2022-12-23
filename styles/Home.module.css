@@ -8,13 +8,17 @@
 
 .button {
   background: linear-gradient(45deg, #261bb9, #ff17a2);
+  /* linear-gradient(45deg, #261bb9, #ff17a2); */
   padding: 1em;
-  box-shadow: 2px 2px black;
+  box-shadow: 1px 1px #261bb9;
   border-radius: 5px;
-  font-weight: 400;
+  font-weight: 600;
   font-style: bold;
   color: white;
   cursor: pointer;
+  min-width: 150px;
+  margin: 0 1em;
+  text-align: center;
 }
 
 .button:hover {
@@ -117,6 +121,15 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+}
+
+.profilebuttons {
+  margin-top: 5em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   width: 100%;
 }
 
