@@ -2,8 +2,59 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [account, setAccount] = useState();
+  const [loading, setLoading] = useState(false);
+
+  const connectWallet = async () => {
+    setLoading(true);
+    try {
+      const { ethereum } = window;
+      if (!ethereum) {
+        alert("Get MetaMask!");
+        return;
+      }
+      const accounts = await ethereum.request({
+        method: "eth_requestAccounts",
+      });
+      setAccount(accounts[0]);
+      setLoading(false);
+    } catch (err) {
+      console.error(err);
+      setLoading(false);
+    }
+  };
+
+  const checkIfWalletIsConnected = async () => {
+    try {
+      const { ethereum } = window;
+      if (!ethereum) {
+        console.log("Make sure you have metamask!");
+        return;
+      } else {
+        console.log("We have the ethereum object", ethereum);
+      }
+
+      const accounts = await ethereum.request({ method: "eth_accounts" });
+
+      if (accounts.length !== 0) {
+        const account = accounts[0];
+        console.log("Found an authorized account:", account);
+        setAccount(account);
+      } else {
+        console.log("No authorized account found");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    checkIfWalletIsConnected();
+  }, []);
+
   return (
     <>
       <Head>
@@ -32,8 +83,8 @@ export default function Home() {
               />
             </Link>
           </div>
-          <div className={styles.button}>
-            <a>Connect Wallet</a>
+          <div className={styles.button} onClick={connectWallet}>
+            {account ? <a>Wallet Connected</a> : <a>Connect Wallet</a>}
           </div>
         </div>
         <div className={styles.center}>
