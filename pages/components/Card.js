@@ -1,22 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../../styles/Home.module.css";
 
-const Card = () => {
+const Card = (props) => {
+  const { question } = props;
+
   return (
-    <div>
-      <a
-        href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-        className={styles.card}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <h2 className={inter.className}>
-          Docs <span>-&gt;</span>
-        </h2>
-        <p className={inter.className}>
-          Find in-depth information about Next.js features and&nbsp;API.
-        </p>
-      </a>
+    <div className={styles.card}>
+      <h3>{question.question_string}</h3>
+      <p>{question.answer}</p>
+      <footer className={styles.cardfooter}>
+        <button>😍</button>
+        <button>💜</button>
+        <button>🤮</button>
+        <button>😂</button>
+      </footer>
     </div>
   );
 };

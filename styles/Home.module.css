@@ -19,6 +19,7 @@
 
 .button:hover {
   transform: scale(1.1);
+  opacity: 0.7;
 }
 
 .card {
@@ -42,10 +43,26 @@
 
 .card p {
   margin: 0;
-  opacity: 0.6;
-  font-size: 0.9rem;
+  opacity: 0.7;
+  font-size: 1em;
   line-height: 1.5;
   max-width: 30ch;
+}
+
+.card button {
+  border: none;
+  background: transparent;
+}
+
+.card button:hover {
+  transform: scale(1.1);
+}
+
+.cardfooter {
+  display: flex;
+  margin-top: 10px;
+  justify-content: space-evenly;
+  align-items: flex-end;
 }
 
 .center {
@@ -66,9 +83,9 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(25%, auto));
-  width: var(--max-width);
+  grid-template-columns: repeat(4, minmax(25%, auto));
   max-width: 100%;
+  margin: 0px auto;
 }
 
 .navbar {
@@ -104,7 +121,7 @@
 }
 
 /* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
+/* @media (hover: hover) and (pointer: fine) {
   .card:hover {
     background: rgba(var(--card-rgb), 0.1);
     border: 1px solid rgba(var(--card-border-rgb), 0.15);
@@ -113,7 +130,7 @@
   .card:hover span {
     transform: translateX(4px);
   }
-}
+} */
 
 /* Mobile */
 @media (max-width: 700px) {

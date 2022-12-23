@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
 import user_questions from "../dummydata/user_questions.json";
+import Card from "./components/Card";
 
 const Profile = () => {
   const [questions, setQuestions] = React.useState([]);
@@ -35,10 +36,7 @@ const Profile = () => {
       </div>
       <div className={styles.grid}>
         {questions.map((question) => (
-          <div className={styles.card} key={question.id}>
-            <h3>{question.question_string}</h3>
-            <p>{question.answer}</p>
-          </div>
+          <Card question={question} key={question.id} />
         ))}
       </div>
     </main>

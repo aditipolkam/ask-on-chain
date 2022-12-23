@@ -47,13 +47,13 @@ export default function Home() {
 
         <footer className={styles.footer}>
           <h3>
-            built with ♥ by{" "}
+            built by{" "}
             <a
               href="https://linktr.ee/aditipolkam"
               target="_blank"
               rel="noreferrer"
             >
-              @aditipolkam
+              <u> @aditipolkam</u>
             </a>
           </h3>
         </footer>
