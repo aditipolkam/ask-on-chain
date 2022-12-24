@@ -13,6 +13,7 @@ export default function Create() {
   const [open, setOpen] = React.useState(false);
   const [name, setName] = React.useState("");
   const [bio, setBio] = React.useState("");
+  const [username, setUsername] = React.useState("");
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -23,7 +24,7 @@ export default function Create() {
   };
 
   const handleCreate = async () => {
-    await createProfile(name, bio);
+    await createProfile(username, name, bio);
     setOpen(false);
   };
 
@@ -39,6 +40,16 @@ export default function Create() {
           <DialogContentText>
             {`Take that step forward, let people ask you what they've always wanted to!`}
           </DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="username"
+            label="Your Username"
+            type="text"
+            fullWidth
+            variant="standard"
+            onChange={(e) => setUsername(e.target.value)}
+          />
           <TextField
             autoFocus
             margin="dense"

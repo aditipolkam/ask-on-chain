@@ -1,5 +1,18 @@
-export default async function createProfile(name, bio) {
-  console.log("Creating profile with name: ", name, " and bio: ", bio);
+import contractAbi from "../../utils/contractAbi";
+import contractAddress from "../../utils/contractAddress";
+import { ethers } from "ethers";
+
+export default async function createProfile(username, name, bio) {
+  console.log(
+    "Creating profile with name: ",
+    name,
+    " and bio: ",
+    bio,
+    " and username: ",
+    username
+  );
+  console.log("contractAddress: ", contractAddress);
+  console.log("contractAbi: ", contractAbi);
   try {
     const { ethereum } = window;
     if (ethereum) {
@@ -7,10 +20,10 @@ export default async function createProfile(name, bio) {
       const signer = provider.getSigner();
       const contract = new ethers.Contract(
         contractAddress,
-        contractABI,
+        contractAbi,
         signer
       );
-      const transaction = await contract.registerUser(name, bio);
+      const transaction = await contract.registerUser(username, name, bio);
       const receipt = await transaction.wait();
       if (receipt.status === 1) {
         console.log(`${name} created!`);
