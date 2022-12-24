@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
+import Create from "./create";
 
 export default function Home() {
   const [account, setAccount] = useState();
@@ -95,11 +96,10 @@ export default function Home() {
           </div>
           <div className={styles.profilebuttons}>
             <div className={styles.button}>
-              <a href="#">Browse Profiles</a>
+              <Link href="#">Browse Profiles</Link>
             </div>
-            <div className={styles.button}>
-              <a href="#">Create Yours</a>
-            </div>
+
+            <Create />
           </div>
         </div>
 
