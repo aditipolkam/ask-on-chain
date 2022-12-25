@@ -12,7 +12,8 @@ import answerQuestion from "../api/answerQuestion";
 const Card = (props) => {
   const [open, setOpen] = React.useState(false);
   const [answer, setAnswer] = React.useState("");
-  const { question, selfAccount, id, username } = props;
+  const [question, setQuestion] = React.useState();
+  const { ques, selfAccount, id, username } = props;
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -26,6 +27,10 @@ const Card = (props) => {
     answerQuestion(username, id, answer);
     setOpen(false);
   };
+
+  useEffect(() => {
+    setQuestion(ques);
+  }, []);
 
   const displayDialog = () => {
     return (
@@ -56,6 +61,7 @@ const Card = (props) => {
 
   return (
     <div className={styles.card}>
+      {!question && <p>No questions found.</p>}
       <h3>{question.question_string}</h3>
       {question.answer == "" && <span>To be answered</span>}
       {question.answer != "" && <p>{question.answer}</p>}
