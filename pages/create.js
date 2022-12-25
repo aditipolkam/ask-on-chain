@@ -8,11 +8,12 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import styles from "../styles/Home.module.css";
 import createProfile from "./api/createProfile";
+import checkIfWalletIsConnected from "./api/checkIfWalletIsConnected";
 
 export default function Create() {
   const [open, setOpen] = React.useState(false);
-  const [name, setName] = React.useState("");
-  const [bio, setBio] = React.useState("");
+  // const [name, setName] = React.useState("");
+  // const [bio, setBio] = React.useState("");
   const [username, setUsername] = React.useState("");
 
   const handleClickOpen = () => {
@@ -24,7 +25,12 @@ export default function Create() {
   };
 
   const handleCreate = async () => {
-    await createProfile(username, name, bio);
+    if (!checkIfWalletIsConnected()) {
+      alert("Connect Wallet.");
+      setOpen(false);
+      return;
+    }
+    await createProfile(username);
     setOpen(false);
   };
 
@@ -49,26 +55,6 @@ export default function Create() {
             fullWidth
             variant="standard"
             onChange={(e) => setUsername(e.target.value)}
-          />
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Your Name"
-            type="text"
-            fullWidth
-            variant="standard"
-            onChange={(e) => setName(e.target.value)}
-          />
-          <TextField
-            autoFocus
-            margin="dense"
-            id="bio"
-            label="Your Bio"
-            type="text"
-            fullWidth
-            variant="standard"
-            onChange={(e) => setBio(e.target.value)}
           />
         </DialogContent>
         <DialogActions>

@@ -7,9 +7,12 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import styles from "../../styles/Home.module.css";
+import registerQuestion from "../api/registerQuestion";
 
-export default function FormDialog() {
+export default function FormDialog(props) {
+  const username = props.username;
   const [open, setOpen] = React.useState(false);
+  const [question, setQuestion] = React.useState("");
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -17,6 +20,15 @@ export default function FormDialog() {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleAskQuestion = () => {
+    if (question != "") {
+      registerQuestion(username, question);
+      setOpen(false);
+    } else {
+      alert("Empty field");
+    }
   };
 
   return (
@@ -39,11 +51,12 @@ export default function FormDialog() {
             type="text"
             fullWidth
             variant="standard"
+            onChange={(e) => setQuestion(e.target.value)}
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Ask</Button>
+          <Button onClick={handleAskQuestion}>Ask</Button>
         </DialogActions>
       </Dialog>
     </div>

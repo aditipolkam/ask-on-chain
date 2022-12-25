@@ -36,7 +36,7 @@ const Profile = () => {
           </h1>
         </div>
         <div>
-          <FormDialog />
+          <FormDialog username={profile} />
         </div>
       </div>
       <div className={styles.grid}>

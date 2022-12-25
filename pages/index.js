@@ -98,7 +98,6 @@ export default function Home() {
             <div className={styles.button}>
               <Link href="#">Browse Profiles</Link>
             </div>
-
             <Create />
           </div>
         </div>
