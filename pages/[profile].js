@@ -6,15 +6,22 @@ import user_questions from "../dummydata/user_questions.json";
 import Card from "./components/Card";
 import FormDialog from "./components/FormDialog";
 import Link from "next/link";
+import getUserQuestions from "./api/getAllQuestions";
 
 const Profile = () => {
   const [questions, setQuestions] = React.useState([]);
+  const [ques, setQues] = React.useState([]);
   const router = useRouter();
   const { profile } = router.query;
 
   useEffect(() => {
-    setQuestions(user_questions.questions);
-  }, []);
+    getUserQuestions(profile).then((res) => {
+      setQuestions(res);
+      //setQuestions(user_questions.questions);
+    });
+
+    console.log(questions);
+  }, [profile]);
 
   return (
     <main className={styles.main}>
@@ -40,9 +47,10 @@ const Profile = () => {
         </div>
       </div>
       <div className={styles.grid}>
-        {questions.map((question) => (
-          <Card question={question} key={question.id} />
-        ))}
+        {questions &&
+          questions.map((question) => (
+            <Card question={question} key={question.id} />
+          ))}
       </div>
     </main>
   );

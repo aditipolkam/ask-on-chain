@@ -7,7 +7,8 @@ const Card = (props) => {
   return (
     <div className={styles.card}>
       <h3>{question.question_string}</h3>
-      <p>{question.answer}</p>
+      {question.answer == "" && <span>To be answered</span>}
+      {question.answer != "" && <p>question.answer</p>}
       <footer className={styles.cardfooter}>
         <button>😍</button>
         <button>💜</button>

@@ -31,13 +31,14 @@
   border-radius: 2px;
   background: #ffffff;
   border: 1px solid rgba(134, 114, 114, 04);
-  transition: background 200ms, border 200ms;
+  min-width: 25%;
   margin: 1em;
 }
 
 .card span {
   display: inline-block;
   transition: transform 200ms;
+  color: red;
 }
 
 .card h2 {
@@ -88,7 +89,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(25%, auto));
-  max-width: 100%;
+  width: 100%;
   margin: 0px auto;
 }
 
