@@ -85,7 +85,13 @@ export default function Home() {
             </Link>
           </div>
           <div className={styles.button} onClick={connectWallet}>
-            {account ? <a>Wallet Connected</a> : <a>Connect Wallet</a>}
+            {account ? (
+              <a>
+                Wallet: {account.slice(0, 6)}...{account.slice(-4)}
+              </a>
+            ) : (
+              <a>Connect Wallet</a>
+            )}
           </div>
         </div>
         <div className={styles.center}>

@@ -1,5 +1,10 @@
 const contractAbi = [
   {
+    inputs: [],
+    stateMutability: "nonpayable",
+    type: "constructor",
+  },
+  {
     inputs: [
       {
         internalType: "string",
@@ -23,40 +28,17 @@ const contractAbi = [
     type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "string",
-        name: "_username",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "_question_string",
-        type: "string",
-      },
-    ],
-    name: "registerQuestion",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "string",
-        name: "_username",
-        type: "string",
-      },
-    ],
-    name: "registerUser",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [],
-    stateMutability: "nonpayable",
-    type: "constructor",
+    name: "getUser",
+    outputs: [
+      {
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
   },
   {
     inputs: [
@@ -71,9 +53,9 @@ const contractAbi = [
       {
         components: [
           {
-            internalType: "uint16",
+            internalType: "uint256",
             name: "id",
-            type: "uint16",
+            type: "uint256",
           },
           {
             internalType: "string",
@@ -105,6 +87,37 @@ const contractAbi = [
       },
     ],
     stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "_username",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "_question_string",
+        type: "string",
+      },
+    ],
+    name: "registerQuestion",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "_username",
+        type: "string",
+      },
+    ],
+    name: "registerUser",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function",
   },
 ];
