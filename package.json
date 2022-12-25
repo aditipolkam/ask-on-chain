@@ -14,6 +14,8 @@
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.1",
     "@next/font": "13.0.7",
+    "@pushprotocol/restapi": "^0.2.2",
+    "@web3-react/core": "^6.1.9",
     "eslint": "8.30.0",
     "eslint-config-next": "13.0.7",
     "ethers": "^5.7.2",

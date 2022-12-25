@@ -15,14 +15,17 @@ export default async function createProfile(username) {
         signer
       );
       const transaction = await contract.registerUser(username);
+      console.log(transaction.data);
       const receipt = await transaction.wait();
+      console.log(receipt);
       if (receipt.status === 1) {
         console.log(`createProfile: ${username} created!`);
         return;
       }
       console.log(`createProfile : failed to create ${username}`);
     }
-  } catch (err) {
-    console.log("createProfile Error: ", err);
+  } catch (error) {
+    //console.log("createProfile Error: ", error);
+    alert("Profile with this username exists.");
   }
 }

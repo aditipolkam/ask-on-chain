@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
-import user_questions from "../dummydata/user_questions.json";
 import Card from "./components/Card";
 import FormDialog from "./components/FormDialog";
 import Link from "next/link";
