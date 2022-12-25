@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
@@ -7,14 +7,22 @@ import Card from "./components/Card";
 import FormDialog from "./components/FormDialog";
 import Link from "next/link";
 import getUserQuestions from "./api/getAllQuestions";
+import checkIfWalletIsConnected from "./api/checkIfWalletIsConnected";
+import getUser from "./api/getUser";
 
 const Profile = () => {
   const [questions, setQuestions] = React.useState([]);
-  const [ques, setQues] = React.useState([]);
+  const [selfAccount, setSelfAccount] = React.useState(false);
   const router = useRouter();
   const { profile } = router.query;
 
   useEffect(() => {
+    getUser().then((res) => {
+      if (res == profile) {
+        //console.log(res, profile);
+        setSelfAccount(true);
+      }
+    });
     getUserQuestions(profile).then((res) => {
       setQuestions(res);
       //setQuestions(user_questions.questions);
@@ -42,14 +50,16 @@ const Profile = () => {
             Anonymous Questions for <span>{profile}</span>
           </h1>
         </div>
-        <div>
-          <FormDialog username={profile} />
-        </div>
+        <div>{!selfAccount && <FormDialog username={profile} />}</div>
       </div>
       <div className={styles.grid}>
         {questions &&
           questions.map((question) => (
-            <Card question={question} key={question.id} />
+            <Card
+              question={question}
+              key={question.id}
+              selfAccount={selfAccount}
+            />
           ))}
       </div>
     </main>

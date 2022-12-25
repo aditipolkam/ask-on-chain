@@ -57,6 +57,12 @@
 .card button {
   border: none;
   background: transparent;
+  background: #ffb6c1;
+  padding: 0.5em 0.7em;
+  border-radius: 3px;
+  cursor: pointer;
+  font-style: bold;
+  font-weight: 600;
 }
 
 .card button:hover {
