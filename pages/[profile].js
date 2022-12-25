@@ -56,7 +56,7 @@ const Profile = () => {
         {questions &&
           questions.map((question) => (
             <Card
-              question={question}
+              ques={question}
               key={question.id}
               selfAccount={selfAccount}
               username={profile}

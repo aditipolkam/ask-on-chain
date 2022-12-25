@@ -12,7 +12,11 @@ import answerQuestion from "../api/answerQuestion";
 const Card = (props) => {
   const [open, setOpen] = React.useState(false);
   const [answer, setAnswer] = React.useState("");
-  const [question, setQuestion] = React.useState();
+  const [question, setQuestion] = React.useState({
+    id: 0,
+    question_string: "",
+    answer: "",
+  });
   const { ques, selfAccount, id, username } = props;
 
   const handleClickOpen = () => {
@@ -30,6 +34,7 @@ const Card = (props) => {
 
   useEffect(() => {
     setQuestion(ques);
+    console.log("card: question ", question);
   }, []);
 
   const displayDialog = () => {
