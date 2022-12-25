@@ -17,12 +17,12 @@ export default async function answerQuestion(username, id, answer) {
       const transaction = await contract.addAnswer(username, id, answer);
       const receipt = await transaction.wait();
       if (receipt.status === 1) {
-        console.log(`question registered`);
+        console.log(`answerQuestion : success`);
         return;
       }
-      console.log(`failed`);
+      console.log(`answerQuestion : failed`);
     }
   } catch (err) {
-    console.log("Error: ", err);
+    console.log("answerQuestion Error: ", err);
   }
 }

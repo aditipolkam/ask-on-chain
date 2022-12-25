@@ -19,7 +19,7 @@ const Profile = () => {
   useEffect(() => {
     getUser().then((res) => {
       if (res == profile) {
-        //console.log(res, profile);
+        console.log("Profile: get User res and profile", res, profile);
         setSelfAccount(true);
       }
     });
@@ -28,7 +28,7 @@ const Profile = () => {
       //setQuestions(user_questions.questions);
     });
 
-    console.log(questions);
+    console.log("profile: questions", questions);
   }, [profile]);
 
   return (

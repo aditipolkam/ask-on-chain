@@ -3,7 +3,7 @@ import contractAddress from "../../utils/contractAddress";
 import { ethers } from "ethers";
 
 export default async function registerQuestion(username, question) {
-  console.log(username, question);
+  console.log("registerQuestion: username and question", username, question);
   try {
     const { ethereum } = window;
     if (ethereum) {
@@ -17,12 +17,12 @@ export default async function registerQuestion(username, question) {
       const transaction = await contract.registerQuestion(username, question);
       const receipt = await transaction.wait();
       if (receipt.status === 1) {
-        console.log(`question registered`);
+        console.log(`registerQuestion: question registered`);
         return;
       }
-      console.log(`failed`);
+      console.log(`registerQuestion: failed to register question`);
     }
   } catch (err) {
-    console.log("Error: ", err);
+    console.log("registerQuestion Error: ", err);
   }
 }

@@ -14,9 +14,10 @@ export default async function getUser() {
         signer
       );
       const username = await contract.getUser();
+      console.log("getUser: got username from address", username);
       return username;
     }
   } catch (err) {
-    console.log("Error: ", err);
+    console.log("getUser Error: ", err);
   }
 }

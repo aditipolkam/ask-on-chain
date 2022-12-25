@@ -3,7 +3,7 @@ import contractAddress from "../../utils/contractAddress";
 import { ethers } from "ethers";
 
 export default async function getUserQuestions(username) {
-  console.log("u", username);
+  console.log("getAllQuestions: username", username);
   try {
     const { ethereum } = window;
     if (ethereum) {
@@ -15,9 +15,9 @@ export default async function getUserQuestions(username) {
         signer
       );
       const questions = await contract.getUserQuestions(username);
-      console.log(questions);
+      console.log("getAllQuestions: questions", questions);
       if (questions) {
-        console.debug("questions", questions);
+        console.log("getAllQuestions : questions", questions);
         let returnable_questions = [];
         for (let i = 0; i < questions.length; i++) {
           console.log(i, questions[i]);
@@ -29,11 +29,11 @@ export default async function getUserQuestions(username) {
         }
         return returnable_questions;
       } else {
-        console.debug("Empty links");
+        console.debug("getAllQuestions: Empty questions");
       }
       return [];
     }
   } catch (err) {
-    console.log("Error: ", err);
+    console.log("getAllQuestions Error: ", err);
   }
 }

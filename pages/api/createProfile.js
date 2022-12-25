@@ -3,9 +3,7 @@ import contractAddress from "../../utils/contractAddress";
 import { ethers } from "ethers";
 
 export default async function createProfile(username) {
-  console.log("Creating profile with username: ", username);
-  console.log("contractAddress: ", contractAddress);
-  console.log("contractAbi: ", contractAbi);
+  console.log("createProfile: Creating profile with username:- ", username);
   try {
     const { ethereum } = window;
     if (ethereum) {
@@ -19,12 +17,12 @@ export default async function createProfile(username) {
       const transaction = await contract.registerUser(username);
       const receipt = await transaction.wait();
       if (receipt.status === 1) {
-        console.log(`${username} created!`);
+        console.log(`createProfile: ${username} created!`);
         return;
       }
-      console.log(`failed to create ${username}`);
+      console.log(`createProfile : failed to create ${username}`);
     }
   } catch (err) {
-    console.log("Error: ", err);
+    console.log("createProfile Error: ", err);
   }
 }
