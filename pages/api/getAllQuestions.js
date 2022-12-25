@@ -22,7 +22,7 @@ export default async function getUserQuestions(username) {
         for (let i = 0; i < questions.length; i++) {
           console.log(i, questions[i]);
           returnable_questions.push({
-            id: Number(questions[i].id),
+            id: Number(questions[i].id._hex),
             question_string: questions[i].question_string,
             answer: questions[i].answer,
           });

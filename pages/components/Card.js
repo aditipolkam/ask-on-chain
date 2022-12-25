@@ -7,18 +7,23 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import styles from "../../styles/Home.module.css";
+import answerQuestion from "../api/answerQuestion";
 
 const Card = (props) => {
   const [open, setOpen] = React.useState(false);
   const [answer, setAnswer] = React.useState("");
-  const { question, selfAccount } = props;
-  console.log("self", selfAccount);
+  const { question, selfAccount, id, username } = props;
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleAnswer = () => {
+    answerQuestion(username, id, answer);
     setOpen(false);
   };
 
@@ -38,11 +43,12 @@ const Card = (props) => {
             type="text"
             fullWidth
             variant="standard"
+            onChange={(e) => setAnswer(e.target.value)}
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button>Ask</Button>
+          <Button onClick={handleAnswer}>Answer</Button>
         </DialogActions>
       </Dialog>
     );
@@ -52,7 +58,7 @@ const Card = (props) => {
     <div className={styles.card}>
       <h3>{question.question_string}</h3>
       {question.answer == "" && <span>To be answered</span>}
-      {question.answer != "" && <p>question.answer</p>}
+      {question.answer != "" && <p>{question.answer}</p>}
       {selfAccount && (
         <footer className={styles.cardfooter}>
           <button onClick={handleClickOpen}>

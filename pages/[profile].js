@@ -59,6 +59,8 @@ const Profile = () => {
               question={question}
               key={question.id}
               selfAccount={selfAccount}
+              username={profile}
+              id={question.id}
             />
           ))}
       </div>
